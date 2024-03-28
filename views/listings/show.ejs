@@ -28,7 +28,7 @@
 <div class="btns">
   <a
     class="btn btn-dark offset-3"
-    style="background-color: #fe424d;border: none;"
+    style="background-color: #fe424d; border: none"
     href="/listings/<%=listing._id%>/edit"
     >Edit
   </a>
@@ -37,4 +37,20 @@
     <button class="btn btn-dark offset-3">Delete</button>
   </form>
 </div>
-<br> <br>
+
+<div class="col-8 offset-3">
+  <hr>
+  <h4>Leave a Review</h4>
+  <form action="">
+    <div class="mb-3 mt-3">
+      <label for="rating">Rating</label>
+      <input type="range" min="1" max="5" id="rating" name="review[rating]" class="form-range">
+    </div>
+    <div class="mb-3 mt-3">
+      <label for="comment">Comment</label>
+      <textarea name="review[comment]" id="comment" cols="30" rows="4" class="form-control"></textarea>
+    </div>
+    <button class="btn btn-outline-dark">Submit</button>
+  </form>
+</div>
+<br />
