@@ -2,6 +2,7 @@ const express = require("express");
 const app = express();
 const mongoose = require("mongoose");
 const Listing = require("./models/listing.js");
+const Review = require("./models/reviews.js");
 const path = require("path");
 const methodOverride = require("method-override"); // Corrected typo
 const ejsMate = require("ejs-mate");
@@ -111,6 +112,20 @@ app.delete(
     res.redirect("/listings");
   })
 );
+
+// Reviews
+// post Route
+
+app.post("/listings/:id/reviews", async (req, res) => {
+  let listing = await Listing.findById(req.params.id);
+  let newReview = new Review(req.body.review);
+  listing.review.push(newReview);
+
+  await newReview.save();
+  await listing.save();
+
+  console.log(" new review Saved")
+});
 
 // app.get("/testListing", async (req, res) => {
 //   let sampleListing = new Listing({
