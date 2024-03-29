@@ -3,7 +3,7 @@
   <div class="col-8 offset-3 mt-3">
     <h3><b><%= listing.title %></b></h3>
   </div>
-  <div class="card col-6 offset-3 show-card">
+  <div class="card col-6 offset-3 show-card listing-card">
     <img
       src="<%=listing.image%>"
       class="card-img-top show-img"
@@ -73,11 +73,17 @@
   <hr />
   <div>
     <h4>All Reviews</h4>
-    <ul>
-      <% for(review of listing.review) {%>
-      <li><%= review.comment %> , <%= review.rating %> stars</li>
-      <% } %>
-    </ul>
+    <div class="row">
+    <% for(review of listing.review) {%>
+    <div class="card col-5 ms-3 mb-3">
+      <div class="card-body">
+        <div class="card-title">User name</div>
+        <p class="card-text"><%= review.comment %></p>
+        <p class="card-text"><%= review.rating %> <i class="fa-solid fa-star" style="color: #FFD43B;"></i></p>
+      </div>
+    </div>
+    <% } %>
   </div>
+</div>
 </div>
 <br />

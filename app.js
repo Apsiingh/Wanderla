@@ -130,6 +130,7 @@ app.post(
   "/listings/:id/reviews",
   validateReview,
   wrapAsync(async (req, res) => {
+    let id = req.params;
     let listing = await Listing.findById(req.params.id);
     let newReview = new Review(req.body.review);
     listing.review.push(newReview);
