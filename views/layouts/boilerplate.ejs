@@ -30,7 +30,10 @@
   </head>
   <body>
     <%- include("../includes/navbar.ejs") %>
-    <div class="container"><%- body %></div>
+    <div class="container">
+      <%- include("../includes/flash.ejs") %>
+       <%- body %>
+    </div>
     <%- include("../includes/footer.ejs") %>
 
     <!-- -------Bootstrap js cdn----------- -->
@@ -40,6 +43,6 @@
       crossorigin="anonymous"
     ></script>
     <!-- ------frontend bootstarp validation script link----   -->
-     <script src="/js/script.js"></script>
+    <script src="/js/script.js"></script>
   </body>
 </html>
