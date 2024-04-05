@@ -11,8 +11,9 @@ const passport = require("passport");
 const LocalStrategy = require("passport-local");
 const User = require("./models/user.js");
 
-const listings = require("./routers/listing.js");
-const review = require("./routers/review.js");
+const listingsRouter = require("./routers/listing.js");
+const reviewRouter = require("./routers/review.js");
+const userRouter = require("./routers/user.js");
 
 // DB CONNECTION START
 const MONGO_URL = "mongodb://127.0.0.1:27017/wanderlust";
@@ -60,7 +61,6 @@ passport.use(new LocalStrategy(User.authenticate()));
 passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
 
-
 //middleWare for the flash message
 app.use((req, res, next) => {
   res.locals.success = req.flash("success");
@@ -68,8 +68,18 @@ app.use((req, res, next) => {
   next();
 });
 
-app.use("/listings", listings);
-app.use("/listings/:id/reviews", review);
+app.get("/demouser", async (req, res, next) => {
+  let fakeUeser = new User({
+    email: "abc@gmail.com",
+    username: "abc",
+  });
+  let registerUser = await User.register(fakeUeser, "abc123");
+  res.send(registerUser);
+});
+
+app.use("/listings", listingsRouter);
+app.use("/listings/:id/reviews", reviewRouter);
+app.use("/",userRouter)
 
 app.all("*", (req, res, next) => {
   next(new ExpressError(404, "Page not found!"));
