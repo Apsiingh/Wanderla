@@ -65,6 +65,7 @@ passport.deserializeUser(User.deserializeUser());
 app.use((req, res, next) => {
   res.locals.success = req.flash("success");
   res.locals.error = req.flash("error");
+  res.locals.currUser = req.user;
   next();
 });
 
@@ -91,7 +92,7 @@ app.use((err, req, res, next) => {
   res.status(statusCode).render("error.ejs", { err });
 });
 
-let port = 8999;
+let port = 8080;
 app.listen(port, () => {
   console.log("server is running on the port :", port);
 });

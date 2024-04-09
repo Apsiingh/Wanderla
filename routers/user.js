@@ -37,9 +37,19 @@ router.post(
     failureFlash: true,
   }),
   async (req, res) => {
-    req.flash("success","Welcome Back to Wanderla")
-    res.redirect("/listings")
+    req.flash("success", "Welcome Back to Wanderla");
+    res.redirect("/listings");
   }
 );
+
+router.get("/logout", (req, res) => {
+  req.logout((err) => {
+    if (err) {
+      return next(err);
+    }
+    req.flash("success", "you are logged out!");
+    res.redirect("/listings");
+  });
+});
 
 module.exports = router;
