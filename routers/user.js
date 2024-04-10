@@ -23,7 +23,7 @@ router.post(
           return next(err);
         } else {
           req.flash("success", "Welcome To WanderLa");
-          res.redirect(req.session.redirectUrl);
+          res.redirect("/listings");
         }
       });
     } catch (error) {
