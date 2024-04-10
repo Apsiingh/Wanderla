@@ -57,7 +57,6 @@ router.post(
   wrapAsync(async (req, res, next) => {
     // creating instance
     const newListing = new Listing(req.body.listing);
-    newListing.owner = req.user;
     newListing.owner = req.user._id;
     await newListing.save();
     req.flash("success", "New Listing Created !");

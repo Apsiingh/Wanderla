@@ -21,6 +21,7 @@
   </div>
   <br />
 </div>
+<% if(currUser && currUser._id.equals(listing.owner._id)) { %>
 <div class="btns">
   <a
     class="btn btn-dark offset-3"
@@ -33,6 +34,7 @@
     <button class="btn btn-dark offset-3">Delete</button>
   </form>
 </div>
+<% } %>
 
 <div class="col-8 offset-3">
   <hr />
