@@ -29,12 +29,12 @@
         <div class="invalid-feedback">Please provide valid Description.</div>
       </div>
       <div class="mb-3">
+        <P>Original Image Preview</P>
+        <img style="height: 200px ;width: 50%;" src="<%= originalImageUrl %>" />
+      </div>
+      <div class="mb-3">
         <label for="image" class="form-label">Upload New Image </label>
-        <input
-          name="listing[image]"
-          type="file"
-          class="form-control"
-        />
+        <input name="listing[image]" type="file" class="form-control" />
         <div class="invalid-feedback">Please provide a valid Image URL.</div>
       </div>
       <div class="row">
