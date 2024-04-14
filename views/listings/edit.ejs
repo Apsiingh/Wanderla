@@ -7,6 +7,7 @@
       action="/listings/<%= listing.id %>?_method=PUT"
       novalidate
       class="needs-validation"
+      enctype="multipart/form-data"
     >
       <div class="mb-3">
         <label for="title" class="form-label">Title</label>
@@ -28,14 +29,11 @@
         <div class="invalid-feedback">Please provide valid Description.</div>
       </div>
       <div class="mb-3">
-        <label for="image" class="form-label">Image Link</label>
+        <label for="image" class="form-label">Upload New Image </label>
         <input
-          value="<%= listing.image  %>"
           name="listing[image]"
-          placeholder="Enter image URL/Link"
-          type="text"
+          type="file"
           class="form-control"
-          required
         />
         <div class="invalid-feedback">Please provide a valid Image URL.</div>
       </div>
