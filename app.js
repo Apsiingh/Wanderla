@@ -20,7 +20,7 @@ const reviewRouter = require("./routers/review.js");
 const userRouter = require("./routers/user.js");
 
 // DB CONNECTION START
-const MONGO_URL = "mongodb://127.0.0.1:27017/wanderlust";
+const dbUrl = process.env.ATLAS_DB_URL;
 main()
   .then(() => {
     console.log("connected to DB");
@@ -29,7 +29,7 @@ main()
     console.log(err);
   });
 async function main() {
-  await mongoose.connect(MONGO_URL);
+  await mongoose.connect(dbUrl);
 }
 // DB CONNECTION END
 
@@ -92,7 +92,7 @@ app.use((err, req, res, next) => {
   res.status(statusCode).render("error.ejs", { err });
 });
 
-let port = 8080;
+let port = 8000;
 app.listen(port, () => {
   console.log("server is running on the port :", port);
 });
