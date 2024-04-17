@@ -84,16 +84,14 @@ app.use((req, res, next) => {
   next();
 });
 
-app.use("/", async (req, res, next) => {
-  const allListings = await Listing.find({});
-  res.render("listings/index.ejs", { allListings });
-});
+
 app.use("/listings", listingsRouter);
 app.use("/listings/:id/reviews", reviewRouter);
 app.use("/", userRouter);
 
-app.all("*", (req, res, next) => {
-  next(new ExpressError(404, "Page not found!"));
+app.all("*", async(req, res, next) => {
+  const allListings = await Listing.find({});
+  res.render("listings/index.ejs", { allListings });
 });
 
 // MIDDLEWARE FOR ERROR HANDLING
