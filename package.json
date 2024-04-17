@@ -1,4 +1,7 @@
 {
+  "engines": {
+    "node": "19.9.0"
+  },
   "name": "wanderla",
   "version": "1.0.0",
   "description": "",

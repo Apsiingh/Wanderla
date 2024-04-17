@@ -27,9 +27,9 @@
     color: black !important;
     box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
   }
-  .search-input{
+  .search-input {
     border-radius: 25px;
-    padding: 0.5rem 3rem 0.5rem 3rem ;
+    padding: 0.5rem 3rem 0.5rem 3rem;
   }
 </style>
 <nav class="navbar navbar-expand-md bg-body-light border-bottom sticky-top">
@@ -73,7 +73,7 @@
         >
         <a class="nav-link btn-auth" href="/login">Login</a>
         <% } %> <% if(currUser) { %>
-        <a class="nav-link btn-auth" href="/logout">Logout</a>
+        <a class="nav-link btn-auth" href="/logout">Logout :<%= currUser.username  %></a>
         <%} %>
       </div>
     </div>
