@@ -82,7 +82,9 @@ app.use((req, res, next) => {
   res.locals.currUser = req.user;
   next();
 });
-
+app.use("/", (req, res) => {
+  res.render("listings/index.ejs", { allListings });
+});
 app.use("/listings", listingsRouter);
 app.use("/listings/:id/reviews", reviewRouter);
 app.use("/", userRouter);
